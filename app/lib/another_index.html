@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="angular.min.js"></script>
+    <script src="impliment.js"></script>
+    <script src="filter.js"></script>
+    <script src="stringService.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <button>Go to bottom of the page</button>
+    <br><br>
+    <div ng-controller="myController">
+        <input type="checkbox" ng-model="hideSalary">Hide
+        <!-- Display:   <input type="number" step="1" min="0" max="5" ng-model="rowLimit"/>
+        <br>
+        <br> -->
+        <!-- <div>
+            Country:{{country.name}},
+
+        </div>
+        <div>
+            capital:{{country.capital}},
+
+        </div>
+        <div>
+
+            <img ng-src="{{country.flag}}"
+            alt="{{country.name + country.capital}}"
+            style="height: 100;width:200;">
+
+        </div> -->
+        <!-- <table>
+    <tr>
+        <td>
+            FirstName
+        </td>
+        <td>
+            <input type="text"ng-model="employee.fname">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            LastName
+        </td>
+        <td>
+            <input type="text"ng-model="employee.lname">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Gender
+        </td>
+        <td>
+            <input type="text"ng-model="employee.gender">
+        </td>
+    </tr>
+    <tr>
+        <td>
+            FirstName
+        </td>
+        <td>
+            {{employee.fname}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            LastName
+        </td>
+        <td>
+        {{employee.lname}}
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Gender
+        </td>
+        <td>
+        {{employee.gender}}
+        </td>
+    </tr>
+   </table> -->
+        <!-- <table>
+        <thead>
+            <tr>
+               <th>FirstName
+               </th>
+               <th>LastName</th>
+               <th>Gender</th>
+               <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="employee in employees">
+                <td>
+                    {{employee.fname}}
+                </td>
+                <td>
+                    {{employee.lname}}
+                </td>
+                <td>
+                    {{employee.gender}}
+                </td>
+                <td>
+                    {{employee.salary}}
+                </td>
+            </tr>
+        </tbody>
+    </table> -->
+        <!-- <ul>
+            <li ng-repeat="country in countries" ng-init="parentIndex=$index">
+                {{country.name}} - Index={{$index}}
+                <ul>
+                    <li ng-repeat="cities in country.city">
+                        {{cities.name}} -Parent Index={{parentIndex}} - Index={{$index}}
+                    </li>
+                </ul>
+            </li>
+        </ul> -->
+        <!-- orderBy: <select ng-model="sortColumn" >
+        <option value="name">Name ASC</option>
+        <option value="gender">Gender ASC</option>
+        <option value="dob">Date of Birth ASC</option>
+        <option value="-salary">Salary ASC</option>
+       </select> -->
+        <input type="text" placeholder="Search employee" ng-model="searchText">
+        <!-- <input type="text" placeholder="Search city" ng-model="searchText.city"> -->
+        <!-- <input type="checkbox" ng-model="exactMatch">Match -->
+        <br><br>
+        <table>
+            <!-- <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Likes</th>
+                    <th>Dislike</th>
+                    <th>Like/Dislike</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="tech in technologies">
+                    <td>
+                        {{tech.name}}
+                    </td>
+                    <td>
+                        {{tech.likes}}
+                    </td>
+                    <td>
+                        {{tech.dislikes}}
+                    </td>
+                    <td>
+                        <input type="button" value="Like" ng-click="increment(tech)">
+                        <input type="button" value="Dislike" ng-click="decrement(tech)">
+                    </td>
+                </tr>
+            </tbody> -->
+            <thead>
+                <tr>
+                    <th ng-click="sortData('name')">name
+                        <div ng-class="getSortClass('name')"></div>
+                    </th>
+                    <th ng-click="sortData('dob')">Date of Birth
+                        <div ng-class="getSortClass('dob')"></div>
+                    </th>
+                    <th ng-click="sortData('gender')">Gender
+                        <div ng-class="getSortClass('gender')"></div>
+                    </th>
+                    <th ng-click="sortData('salary')" ng-hide="!hideSalary">Salary (number)
+                        <div ng-class="getSortClass('salary')"></div>
+                    </th>
+                    <th>Country</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="empl in employees ">
+                    <!-- | filter:searchText:exactMatch -->
+                    <td>
+                        {{empl.name | uppercase}}
+                    </td>
+                    <td>{{empl.dob | date:"dd/MM/yyyy"}}</td>
+                    <td>{{empl.gender | gender}} </td>
+                    <td ng-hide="!hideSalary">{{empl.salary | number:2}}</td>
+                    <td ng-repeat="xn in empl.city ">{{xn.nameOne}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li ng-repeat="empl in employees">{{empl.name}}
+                <ul>
+                    <li ng-repeat="xn in empl.city ">
+                        {{xn.name}}{{xn.nameOne}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        Select View:
+        <Select ng-model="employeeView">
+            <option value="employeeTable.html">Table</option>
+            <option value="emptableList.html">List</option>
+        </Select>
+        <div ng-include="employeeView"></div>
+        <table>
+            <tr>
+                <td> Your String</td>
+                <td>
+                    <input type="text" ng-model="input">
+                </td>
+            </tr>
+            <tr>
+                <td>Result</td>
+                <td><input type="text" ng-model="output"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <input type="button" ng-click="transformString(input)" value="Processing">
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        40+50={{40+50}}
+    </div>
+
+</body>
+
+</html>

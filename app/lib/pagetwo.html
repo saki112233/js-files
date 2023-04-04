@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"  >
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="angular-route.min.js"></script>
+    <script src="anotherscript.js"></script>
+
+    
+</head>
+
+<body ng-app="Demo">
+    <table style="font-family: Aeial;">
+        <tr>
+            <td colspan="2" class="header">
+                <h1>
+                    WebSite Header
+                </h1>
+            </td>
+        </tr>
+        <tr>
+            <td class="leftMenu">
+                <a href="#/home">Home</a>
+                <a href="#/course">Course</a>
+                <a href="#/student">student</a>
+            </td>
+            <td class="mainContent">
+             <ng-view></ng-view>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="footer">
+                <b>Website Footer</b>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

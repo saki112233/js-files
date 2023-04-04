@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  hello
+</body>
+<script>
+  const car = {
+    name: "BMW",
+    model: 500,
+    weight: "900kg",
+    color: "Black",
+    start: function () {
+      console.log("car has started");
+    },
+    drive: function () {
+      console.log("drive the car");
+    }
+  }
+  console.log(car['weight']);
+  car.start()
+  const shape = {
+    rad: 10,
+    dia() {
+      return this.rad * 2;
+    }
+  }
+  console.log(shape.dia());
+  function sayHi() {
+    console.log(names);
+    //   console.log(age);
+    var names = "abc";
+    //   let age=20;
+  }
+  sayHi();
+  let txt = new String("jhon");
+  console.log(txt.length);
+  let str = " Apple, Banana, Kiwi ";
+  let strtwo = "leap";
+  let strthree = strtwo.concat(", ", str);
+  console.log(strthree);
+  let sr = str.replace("Apple", "orange");
+  console.log(str.indexOf(1));
+  console.log(typeof "10a" / 10);
+  let x = ['apple', 'banana', 'orange', 'mango'];
+  let y = [100, 25, 20, 55, 99, "a"];
+  // for(i=0;i<x.length;i++){
+  //   console.log(x[i]);
+  // }
+  // function myFunction(value){
+  //   console.log(value);
+  // }
+  // x.forEach(myFunction)
+  // x.push('lemon');
+  // console.log(x.pop());
+  // console.log(x);
+  // x.splice(2,1,"kiwi","papaya");
+  const mychild = x.concat("guava");
+  console.log(y.sort(function (a, b) {
+    return a - b;
+  }));
+  const numbers = [45, 23, 20, 15, 10];
+  function myFunction(total, value, index, array) {
+    console.log(total);
+    return value + total;
+  }
+  const newArray = numbers.reduce(myFunction);
+  console.log(newArray);
+  console.log(Array.from("ABC"));
+  console.log(Math.random());
+  function getNumber(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  console.log(getNumber(6, 1));
+  function selectedYear(year) {
+    if ((year % 400 === 0) || ((year % 4 === 0) && (year % 100 !== 0))) {
+      console.log(`${year} is leap year`);
+    } else {
+      console.log(`${year} is not`);
+    }
+  }
+  selectedYear(2024);
+  const vowl = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  function countVowl(sentence) {
+    let count = 0;
+    const letters=Array.from(sentence);
+    letters.forEach(function(value){
+      if(vowl.includes(value)){
+        count ++;
+      }
+    });
+    return count;
+  }
+  console.log(countVowl("HEllo BAngladesh"));
+  const number=[1,4,2,3,5,1,2,3,8,9,10,14,15,16,11,10];
+  const dup=number.filter(function(value,index,array){
+    return array.indexOf(value)!==index;
+  });
+  console.log(dup);
+  const cars = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"];
+  for(i=0;i<cars.length;i++){
+    // console.log(cars[i]);
+  }
+  const person=[10,20,5,9,88,8]
+  for(let x in person){
+    console.log(person[x]);
+  }
+  let ll=0;
+  let tt="";
+  while(ll<10){
+    tt+="The test ids "+i;
+  ll++;
+  }
+  console.log(typeof(typeof(5)));
+</script>
+
+</html>
